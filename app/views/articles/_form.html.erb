@@ -1,0 +1,26 @@
+<div class="article-form">
+    <%= form_with(model: article,local: true) do |f|  %>
+        <%= f.label :title,"标题" %>
+        <%= f.text_field :title %>
+
+        <%= f.label :category_id,"分类" %> 
+        <%= f.select :category_id,@categories %>
+
+        <div class="radio">
+            <div class="radio-inline">
+                <%= f.label :original,"原创" %>
+                <%= radio_button "article","article_type", "原创"  %>
+            </div>
+            <div class="radio-inline">
+                <%= f.label :translated,"翻译" %>
+                <%= radio_button "article","article_type", "翻译" %>
+            </div>
+        </div>
+        <%= f.label :original_url,"来源" %>
+        <%= f.text_field :original_url %>
+        <%= f.label :content,"正文" %>
+        <%= f.text_area :content, class: "content" %>
+        <%= f.submit "保存并预览", class: "btn btn-primary" %>
+    <% end %>
+</div>
+

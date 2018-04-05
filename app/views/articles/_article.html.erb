@@ -1,0 +1,14 @@
+<li id="article-<%= article.id %>">
+    <div class="clearfix" >
+       <div class="article-info"> 
+           <%= link_to gravatar_for(article.user, size: 50), article.user %>
+           <span class="title"><%= link_to article.title, article %></span>
+           <span class="timestamp">
+                 Updated <%= time_ago_in_words(article.updated_at) %> ago.
+           </span>
+       </div>
+      <div class="status">
+          <label class="label label-info label-lg"><%= article.status %></label>
+      </div>
+  </div>
+</li>

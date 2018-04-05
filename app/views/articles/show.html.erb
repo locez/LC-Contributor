@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="show-article clearfix">
+        <h1>
+            <span class="title">
+                <%= @article.title %>
+            </span>
+        </h1>
+        <span class="timestamp pull-right">
+            Last updated <%= time_ago_in_words @article.updated_at %> ago.
+        </span>
+        <div class="extra-info">
+            <span>
+                类型: <%= @article.article_type %>
+            </span>
+            
+            <span class="category">
+                分类: <%= @article.category.title %>
+            </span>
+            
+            <div class="url">
+                来源: <%= link_to  @article.original_url, @article.original_url %>
+            </div>
+        </div>
+
+            <% if current_user.present? %>
+                <div class="pull-right" >
+                    <label class="btn btn-info disabled" >
+                        <%= @article.status %>
+                    </label>
+
+                    <% unless @article.status == "已投稿" and !current_user.has_role? :admin %>
+                    <%= link_to "删除", @article, method: :delete,
+                        data: { confirm: "确定删除该文章？" } ,
+                        class: "btn btn-danger"%>
+
+                    <%= link_to "编辑", edit_article_path(@article),
+                        class: "btn btn-primary"%>               
+                    <%= link_to "投稿", push_article_path(@article), method: :patch,
+                        data: { confirm: "确定投稿？"},
+                        class: "btn btn-primary"%>
+                <%end%>
+
+            </div>
+
+           <% end %>
+            
+            <div class="content" >
+                   <%= markdown @article.content %>
+            </div>
+    </div>
+</div>
