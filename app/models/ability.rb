@@ -6,12 +6,13 @@ class Ability
     
     alias_action :create, :read, :update, :destroy, :push, to: :crudp
     can :create, User
-    if user.present?
+    can :crudp, Article, user_id: 2
+   if user.present?
         can :crudp, Article, user_id: user.id
         can :read,  User, id: user.id
         can :update, User, id: user.id
         if user.has_role? :admin
-            can :manage, User, id: user.id
+            can :manage, User
             can :manage, Article
         end
     end
