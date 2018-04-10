@@ -1,26 +1,48 @@
-<div class="article-form">
-    <%= form_with(model: article,local: true) do |f|  %>
+<div class="article-form" >
+    <%= form_with(model: article, local: true) do |f|  %>
+        <%= render 'shared/article_error_messages' %>
         <%= f.label :title,"标题" %>
         <%= f.text_field :title %>
-
-        <%= f.label :category_id,"分类" %> 
-        <%= f.select :category_id,@categories %>
-
-        <div class="radio">
-            <div class="radio-inline">
-                <%= f.label :original,"原创" %>
-                <%= radio_button "article","article_type", "原创"  %>
+        <div class="row">
+            <div class="col-sm-2">
+                <%= f.label :category_id,"分类" %> 
+                <%= f.select :category_id,@categories,class: "form-control" %>
             </div>
-            <div class="radio-inline">
-                <%= f.label :translated,"翻译" %>
-                <%= radio_button "article","article_type", "翻译" %>
+
+            <div class="col-sm-1">
+                <%= f.label :original,"原创" %>
+                <%= radio_button "article","article_type", "self", 
+                    class: "radio-inline"%>
+            </div>
+            <div class="col-sm-1">
+                <%= f.label :translated,"翻译"%>
+                <%= radio_button "article","article_type", "trans",
+                    class: "radio-inline" %>
             </div>
         </div>
-        <%= f.label :original_url,"来源" %>
-        <%= f.text_field :original_url %>
+        <div id="self-info" hidden >
+            <%= f.label :author, "作者" %>
+            <%= f.text_field :author %>
+        </div>
+
+        <div id="trans-info" hidden >
+            <%= f.label :translator, "译者" %>
+            <%= f.text_field :translator %>
+
+            <%= f.label :original_author, "原文作者" %>
+            <%= f.text_field :original_author %>
+
+            <%= f.label :original_url, "原文地址" %>
+            <%= f.text_field :original_url %>
+        </div>
+    
+        <div> 
+        <%= f.label :source_url,"首发地址" %>
+        <%= f.text_field :source_url %>
         <%= f.label :content,"正文" %>
         <%= f.text_area :content, class: "content" %>
         <%= f.submit "保存并预览", class: "btn btn-primary" %>
+        </div>
     <% end %>
 </div>
 

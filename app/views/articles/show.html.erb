@@ -10,17 +10,35 @@
         </span>
         <div class="extra-info">
             <span>
-                类型: <%= @article.article_type %>
+                类型: <%= @article.article_type == "self"?"原创":"翻译" %>
             </span>
             
             <span class="category">
                 分类: <%= @article.category.title %>
-            </span>
-            
+        </span>
+        <div>
+           <% if @article.article_type == "self" %>
+               <div>
+                   作者: <%= @article.author %>
+               </div>
+           <% else %>
+               <div>
+                   译者: <%= @article.translator %>
+               </div>
+               <div>
+                   原文作者: <%= @article.original_author %>
+               </div>
+               <div>
+                   原文地址: <%= @article.original_url %>
+               </div>
+           <% end %>
+        </div>
             <div class="url">
-                来源: <%= link_to  @article.original_url, @article.original_url %>
+                首发地址: <%= link_to  @article.source_url, @article.source_url %>
             </div>
         </div>    
+ 
+        
         <div class="pull-right" >
             <label class="btn btn-info disabled" >
                  <%= @article.status %>
@@ -41,7 +59,7 @@
                 <% end %>
             <% end %>
 
-    </div>  
+       </div>  
             <div class="content" >
                    <%= markdown @article.content %>
             </div>

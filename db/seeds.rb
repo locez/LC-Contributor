@@ -8,8 +8,8 @@
 #
 admin = User.new(name: "locez",email: "loki.a@live.cn", 
                  password: "12345678", password_confirmation: "12345678")
-admin.save
 admin.add_role :admin
+admin.save
 anonymous = User.new(name: "anonymous",email: "anonymous@linux.cn",
                  password: "11111111", password_confirmation: "11111111")
 anonymous.save
@@ -21,5 +21,6 @@ c = Category.find 1
 50.times do
   title = Faker::Lorem.sentence(5)
   content = Faker::Lorem.sentence(5)
-  anonymous.articles.create!(title: title,content: content,category: c, status: "待投稿")
+  anonymous.articles.create!(title: title, article_type: "self",
+                             content: content,category: c, status: "待投稿")
 end

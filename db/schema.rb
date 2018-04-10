@@ -14,10 +14,13 @@ ActiveRecord::Schema.define(version: 20180404060732) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
-    t.string "article_type"
     t.string "content"
+    t.string "author"
+    t.string "translator"
+    t.string "original_author"
     t.string "original_url"
-    t.string "tag"
+    t.string "source_url"
+    t.string "article_type"
     t.integer "user_id"
     t.integer "category_id"
     t.datetime "created_at", null: false
