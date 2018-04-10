@@ -5,20 +5,37 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
+* Ruby version 2.3
 
 * Configuration
 
+bundle gems
+```
+ bundle install
+```
+
+edit `db/seeds.rb` to setup your admin user and anonymous user
+
+
 * Database creation
+
+```
+ rails db:migrate:reset
+```
 
 * Database initialization
 
-* How to run the test suite
+```
+ rails db:seed
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+* How to run
 
-* Deployment instructions
+```
+rails server
+```
 
-* ...
+* Todo
+ - add more tips for the article form
+ - add notification for the admin
+ - add password reset
