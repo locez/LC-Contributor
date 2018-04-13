@@ -1,41 +1,37 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a submission system for [Linux.CN](https://linux.cn)
 
-Things you may want to cover:
+### Ruby version 2.3
 
-* Ruby version 2.3
-
-* Configuration
+### Configuration
 
 bundle gems
+
 ```
  bundle install
 ```
-
 edit `db/seeds.rb` to setup your admin user and anonymous user
 
 
-* Database creation
+### Database creation
 
 ```
  rails db:migrate:reset
 ```
 
-* Database initialization
+### Database initialization
 
 ```
  rails db:seed
 ```
 
-* How to run
+### Run
 
 ```
 rails server
 ```
 
 * Todo
- - add more tips for the article form
  - add notification for the admin
  - add password reset

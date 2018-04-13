@@ -2,7 +2,7 @@
     <%= form_with(model: article, local: true) do |f|  %>
         <%= render 'shared/article_error_messages' %>
         <%= f.label :title,"标题" %>
-        <%= f.text_field :title %>
+        <%= f.text_field :title, placeholder: "填写文章标题" %>
         <div class="row">
             <div class="col-sm-2">
                 <%= f.label :category_id,"分类" %> 
@@ -38,9 +38,10 @@
     
         <div> 
         <%= f.label :source_url,"首发地址" %>
-        <%= f.text_field :source_url %>
+        <%= f.text_field :source_url, placeholder: "首次发表该文章的地址，若无请留空" %>
         <%= f.label :content,"正文" %>
-        <%= f.text_area :content, class: "content" %>
+        <%= f.text_area :content, class: "content", placeholder: 
+            "正文格式为 MarkDown 格式, 请注意代码块格式" %>
         <%= f.submit "保存并预览", class: "btn btn-primary" %>
         </div>
     <% end %>

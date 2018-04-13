@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 #
-admin = User.new(name: "locez",email: "loki.a@live.cn", 
+admin = User.new(name: "admin",email: "admin@linux.cn", 
                  password: "12345678", password_confirmation: "12345678")
 admin.add_role :admin
 admin.save
@@ -17,10 +17,4 @@ anonymous.save
     c = Category.new(title: category,slug: "")
     c.save
 end
-c = Category.find 1
-50.times do
-  title = Faker::Lorem.sentence(5)
-  content = Faker::Lorem.sentence(5)
-  anonymous.articles.create!(title: title, article_type: "self",
-                             content: content,category: c, status: "待投稿")
-end
+
