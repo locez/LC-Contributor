@@ -3,6 +3,7 @@
     <%= link_to "Linux CN 原创投稿平台", root_path, id: "logo" %>
     <nav>
         <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "帮助", help_path %></li>
             <li><%= link_to "投稿", create_article_path %></li>
           <% if logged_in? && current_user.id != $anony %>
                         <li class="dropdown">

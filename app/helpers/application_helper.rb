@@ -1,3 +1,4 @@
+require 'rouge/plugins/redcarpet'
 module ApplicationHelper
   # Returns the full title on a per-page basis.
   def full_title(page_title = '')
@@ -16,16 +17,14 @@ module ApplicationHelper
           :fenced_code_blocks => true,
           :no_intra_emphasis => true,
           :strikethrough => true,
+          :tables => true
+          
       }
-      markdown = Redcarpet::Markdown.new(HtmlWithCodeRay,options)
+      markdown = Redcarpet::Markdown.new(HtmlWithRouge,options)
       markdown.render(text).html_safe
   end
 
-  class HtmlWithCodeRay < Redcarpet::Render::HTML
-      def block_code(code,language)
-          CodeRay.scan(code,language).div(:tab_with=>2)
-      end
+  class HtmlWithRouge < Redcarpet::Render::HTML
+    include Rouge::Plugins::Redcarpet 
   end
-
-
 end

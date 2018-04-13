@@ -1,0 +1,31 @@
+<% provide(:title, "帮助") %>
+<% help_content = %q{
+### 一级栏目
+
+#### 二级栏目
+
+##### 三级栏目
+
+> 引用内容
+
+![linux_cn](https://ooo.0o0.ooo/2017/04/28/5903576f5d014.jpeg)
+
+|  table 1 |  table2  |
+| :------------: | :------------: |
+|  key1 | value1  |
+
+行内代码使用`code`来标示
+
+多行代码使用,注意代码块之前的文字必须与代码块间隔一行
+
+```
+console.log("Hello World")
+``` } %>
+<h4>本投稿系统仅接受 MarkDown 格式投稿，其中格式为：</h4>
+<pre >
+    <%= help_content %>
+</pre>
+<h4>转换以后:</h4>
+<div style="margin-top:30px;">
+    <%= markdown help_content %>
+</div>
