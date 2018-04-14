@@ -1,18 +1,34 @@
-# README
 
-This is a submission system for [Linux.CN](https://linux.cn)
+# This is a submission system for [Linux.CN](https://linux.cn)
 
 ### Ruby version 2.3
 
 ### Configuration
 
-bundle gems
+#### 1.bundle gems
 
 ```
  bundle install
 ```
-edit `db/seeds.rb` to setup your admin user and anonymous user
+#### 2.edit `db/seeds.rb` to setup your admin user and anonymous user
 
+#### 3.setup wechat app information
+
+```
+vim config/wechat.yml
+```
+
+```yml
+wechat: &wechat
+    corpid: "your corpid"
+    corpsecret: "your secret"
+    #your application number 
+    agentid: 1234
+    #some users you want to send message,"@all" will send all users,at least one 
+    users: "user1|user2|..."
+production: *wechat
+development: *wechat
+```
 
 ### Database creation
 
@@ -32,6 +48,6 @@ edit `db/seeds.rb` to setup your admin user and anonymous user
 rails server
 ```
 
-* Todo
- - add notification for the admin
+# Todo
  - add password reset
+ - modify preview page

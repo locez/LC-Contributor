@@ -53,10 +53,11 @@
 
                     <%= link_to "编辑", edit_article_path(@article),
                         class: "btn btn-primary"%>               
-              
+                    <% unless @article.status == "已投稿" %>
                     <%= link_to "投稿", push_article_path(@article), method: :patch,
                         data: { confirm: "确定投稿？"},
                         class: "btn btn-primary" %>
+                <% end %>
                 <% end %>
             <% end %>
 

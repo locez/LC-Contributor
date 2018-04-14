@@ -1,5 +1,7 @@
+require 'wechat'
 class ArticlesController < ApplicationController
     load_and_authorize_resource
+    include Wechat
     def show
         @article = Article.find_by(id: params[:id])
     end
@@ -43,11 +45,26 @@ class ArticlesController < ApplicationController
     def push
          @article = Article.find_by(id:params[:id])
          if @article.update(:status => "已投稿" )
+             sendMessage wechat_content @article
              redirect_to @article
          end
     end
 
     private
+    def get_ip_port
+        ip = `curl icanhazip.com`
+        port = `cat #{Rails.root.to_s}/config/puma.rb | grep 'ENV.fetch("PORT")'`.match(/\d+/).to_s.to_i
+        [ip, port]
+    end
+
+    def wechat_content article
+        ip, port = get_ip_port
+        content = "有新投稿:\n" + 
+            "<a href=\"http://#{ip}:#{port}/articles/#{article.id}\">" + 
+            article.title + "</a>\n" + 
+            `date`
+        content
+    end
 
     def get_categories
         @categories = Category.all.collect{
