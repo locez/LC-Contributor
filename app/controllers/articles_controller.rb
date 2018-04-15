@@ -61,7 +61,7 @@ class ArticlesController < ApplicationController
     end
 
     def wechat_content article
-        domain = Rails.configuration.wechat['domain']
+        domain = Rails.configuration.app['domain']
         if domain.nil? or domain.empty?
             ip, port = get_ip_port
             domain = ip + ":" + port

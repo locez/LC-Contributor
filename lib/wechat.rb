@@ -2,10 +2,10 @@ require 'net/http'
 require 'json'
 
 module Wechat
-    @@corpid = Rails.configuration.wechat['corpid']
-    @@corpsecret = Rails.configuration.wechat['corpsecret']
-    @@agentid = Rails.configuration.wechat['agentid']
-    @@users = Rails.configuration.wechat['users']
+    @@corpid = Rails.configuration.app['corpid']
+    @@corpsecret = Rails.configuration.app['corpsecret']
+    @@agentid = Rails.configuration.app['agentid']
+    @@users = Rails.configuration.app['users']
     def getAccessToken
         api = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?"
         res = Net::HTTP.get_response(URI.parse([api, 
