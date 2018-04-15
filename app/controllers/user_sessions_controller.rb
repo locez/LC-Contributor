@@ -32,7 +32,7 @@ class UserSessionsController < ApplicationController
      end
      @user_session = UserSession.create(@user,true)
      flash[:success] = "Welcome back!"
-     redirect_to current_user
+     redirect_to @user
      
   end
 
