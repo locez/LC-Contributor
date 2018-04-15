@@ -52,15 +52,19 @@ class ArticlesController < ApplicationController
 
     private
     def get_ip_port
-        ip = `curl icanhazip.com`
+        ip = `curl icanhazip.com`.chomp
         port = `cat #{Rails.root.to_s}/config/puma.rb | grep 'ENV.fetch("PORT")'`.match(/\d+/).to_s.to_i
         [ip, port]
     end
 
     def wechat_content article
-        ip, port = get_ip_port
+        domain = Rails.configuration.wechat['domain']
+        if domain.nil? or domain.empty?
+            ip, port = get_ip_port
+            domain = ip + ":" + port
+        end
         content = "有新投稿:\n" + 
-            "<a href=\"http://#{ip}:#{port}/articles/#{article.id}\">" + 
+            "<a href=\"http://#{domain}/articles/#{article.id}\">" + 
             article.title + "</a>\n" + 
             `date`
         content
