@@ -64,7 +64,7 @@ class ArticlesController < ApplicationController
         domain = Rails.configuration.app['domain']
         if domain.nil? or domain.empty?
             ip, port = get_ip_port
-            domain = ip + ":" + port
+            domain = ip + ":" + port.to_s
         end
         content = "有新投稿:\n" + 
             "<a href=\"http://#{domain}/articles/#{article.id}\">" + 

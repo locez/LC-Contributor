@@ -29,8 +29,8 @@
                <div>
                    原文作者: <%= @article.original_author %>
                </div>
-               <div>
-                   原文地址: <address><%= @article.original_url %> </address>
+               <div class="url">
+                   原文地址: <%= link_to @article.original_url, @article.original_url %> 
                </div>
            <% end %>
         </div>
