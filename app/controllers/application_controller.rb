@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
   end
   
   private
-  $anony = 2
 
   def current_user_session
       return @current_user_session if defined?(@current_user_session)
@@ -20,7 +19,7 @@ class ApplicationController < ActionController::Base
   def current_user
     return @current_user if defined?(@current_user)
     @current_user = current_user_session && current_user_session.user
-    @current_user = User.find $anony if @current_user.nil?  #用户未登录则返回匿名用户
+    @current_user = User.find_by(:email => "anonymous@linux.cn") if @current_user.nil?  #用户未登录则返回匿名用户
     @current_user
   end
 

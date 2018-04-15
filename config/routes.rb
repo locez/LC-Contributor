@@ -1,21 +1,22 @@
 Rails.application.routes.draw do
 
-  get '/login', to: 'user_sessions#new'
-  post '/login', to: 'user_sessions#create'
+#  get '/login', to: 'user_sessions#new'
+#  post '/login', to: 'user_sessions#create'
+#  root 'user_sessions#new'
+#  get '/signup', to: 'users#new'  
+#  post '/signup', to: 'users#create'
+
+
+  root 'static_pages#help'
+
+  get '/auth/:provider/callback', to: 'user_sessions#auth_create'
+  get '/login', to: 'user_sessions#auth_new'
   delete '/logout', to: 'user_sessions#destroy'
-  root 'user_sessions#new'
   get '/help', to: 'static_pages#help'
-
-  get '/signup', to: 'users#new'  
-  post '/signup', to: 'users#create'
-
   get '/article/create', to: 'articles#new'
   post '/article/create', to: 'articles#create', as: :create_article
   
-  get '/users/check', to: 'users#check', as: :check_articles
-#  get '/article-edit', to: 'articles#edit'
   resources :users
-#  resources :user_sessions
   resources :articles do
       member do
           patch 'push'
