@@ -22,9 +22,12 @@
 console.log("Hello World")
 ``` } %>
 <h4>本投稿系统仅接受 MarkDown 格式投稿，其中格式为：</h4>
-<pre >
-    <%= help_content %>
+<pre class="highlight markdown"> 
+    <code class="hljs">
+        <%= help_content %>
+    </code>
 </pre>
+
 <h4>转换以后:</h4>
 <div style="margin-top:30px;">
     <%= markdown help_content %>

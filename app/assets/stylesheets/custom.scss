@@ -247,6 +247,7 @@ span.picture {
     display: block;
     margin-top: 60px;
     img {
+      width: 100%;
       display: block;
       padding: 5px 0;
     }
@@ -264,4 +265,6 @@ span.picture {
 
 pre{
     padding: 0px;
+    background: #FFF;
+    border: 0px;
 }

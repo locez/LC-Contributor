@@ -30,7 +30,7 @@
                    原文作者: <%= @article.original_author %>
                </div>
                <div>
-                   原文地址: <%= @article.original_url %>
+                   原文地址: <address><%= @article.original_url %> </address>
                </div>
            <% end %>
         </div>
@@ -38,7 +38,6 @@
                 首发地址: <%= link_to  @article.source_url, @article.source_url %>
             </div>
         </div>    
- 
         
         <div class="pull-right" >
             <label class="btn btn-info disabled" >
@@ -60,10 +59,19 @@
                 <% end %>
                 <% end %>
             <% end %>
-
-       </div>  
-            <div class="content" >
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-md-6 left">
+                <pre class="highlight markdown"> 
+                    <code class="hljs">
+                        <%= "MarkDown Preview\n\n"+@article.content %>
+                    </code>
+                </pre>
+            </div>
+            <div class="col-md-6 right content" >
                    <%= markdown @article.content %>
             </div>
+        </div>
     </div>
 </div>

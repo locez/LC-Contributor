@@ -4,6 +4,9 @@ class ArticlesController < ApplicationController
     include Wechat
     def show
         @article = Article.find_by(id: params[:id])
+        if @article.status == "待投稿"
+            flash[:danger] = "您的文章尚未投稿，请您离开之前点击标题右下角“投稿“进行投稿"
+        end
     end
     def new
         get_categories

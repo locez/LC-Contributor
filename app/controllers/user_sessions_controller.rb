@@ -1,5 +1,8 @@
 class UserSessionsController < ApplicationController
   def new
+    unless current_user.nil?
+        redirect_to current_user
+    end
     @user_session = UserSession.new
   end
   
