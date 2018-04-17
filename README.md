@@ -10,17 +10,15 @@
 ```
  bundle install
 ```
-
-### edit `db/seeds.rb` to setup your anonymous user
-if you want to set up one user as admin, you can:
+### Set up one user as admin
 
 ```
 rails console
-user = User.find_by(:mail => "your email")
+user = User.find_by(:email => "your email")
 user.add_role :admin
 ```
 
-### setup application information
+### Set up application information
 
 ```
 vim config/application.yml
@@ -66,5 +64,3 @@ development:
 rails server
 ```
 
-# Todo
- - add root, about and contact page

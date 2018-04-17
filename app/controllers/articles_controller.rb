@@ -67,8 +67,8 @@ class ArticlesController < ApplicationController
             domain = ip + ":" + port.to_s
         end
         content = "有新投稿:\n" + 
-            "<a href=\"http://#{domain}/articles/#{article.id}\">" + 
-            article.title + "</a>\n" + 
+            "<a href=\"http://#{domain}/articles/#{article.id}\">《" + 
+            article.title + "》</a>\n" + 
             `date`
         content
     end
