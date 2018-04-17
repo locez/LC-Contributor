@@ -7,14 +7,14 @@ Rails.application.routes.draw do
 #  post '/signup', to: 'users#create'
 
 
-  root 'static_pages#help'
-
+  root 'static_pages#index'
+  get '/about',                   to: 'static_pages#about'
   get '/auth/:provider/callback', to: 'user_sessions#auth_create'
-  get '/login', to: 'user_sessions#auth_new'
-  delete '/logout', to: 'user_sessions#destroy'
-  get '/help', to: 'static_pages#help'
-  get '/article/create', to: 'articles#new'
-  post '/article/create', to: 'articles#create', as: :create_article
+  get '/login',                   to: 'user_sessions#auth_new'
+  delete '/logout',               to: 'user_sessions#destroy'
+  get '/help',                    to: 'static_pages#help'
+  get '/article/create',          to: 'articles#new'
+  post '/article/create',         to: 'articles#create', as: :create_article
   
   resources :users
   resources :articles do
