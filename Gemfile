@@ -42,7 +42,6 @@ gem 'rolify'
 gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'redcarpet'
-gem 'rouge',                   '3.1.1'
 gem 'omniauth-github',         '1.3.0'
 
 

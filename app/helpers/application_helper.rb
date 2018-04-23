@@ -1,4 +1,3 @@
-require 'rouge/plugins/redcarpet'
 module ApplicationHelper
   # Returns the full title on a per-page basis.
   def full_title(page_title = '')
@@ -20,11 +19,13 @@ module ApplicationHelper
           :tables => true
           
       }
-      markdown = Redcarpet::Markdown.new(HtmlWithRouge,options)
+      markdown = Redcarpet::Markdown.new(CustomerHtml,options)
       markdown.render(text).html_safe
   end
 
-  class HtmlWithRouge < Redcarpet::Render::HTML
-    include Rouge::Plugins::Redcarpet 
+  class CustomerHtml < Redcarpet::Render::HTML
+       def table(header, body)
+           %(<table class="table-bordered">#{header}#{body}</table>)
+       end
   end
 end
