@@ -6,8 +6,7 @@ class Ability
     
     alias_action :create, :read, :update, :destroy, :push, to: :crudp
     can :create, User
-    can :crudp, Article, user_id: user.id
-    if user.present? and !user.has_role? :anony
+    if user.present?
         can :crudp, Article, user_id: user.id
         can :read,  User, id: user.id
         can :update, User, id: user.id

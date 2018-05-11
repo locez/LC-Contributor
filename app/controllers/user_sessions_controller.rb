@@ -1,8 +1,5 @@
 class UserSessionsController < ApplicationController
   def new
-    unless current_user.nil? or current_user.has_role? :anony 
-        redirect_to current_user
-    end
     @user_session = UserSession.new
   end
   

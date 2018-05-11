@@ -6,8 +6,6 @@ class UsersController < ApplicationController
 
     def show
         # 除管理员外, 其他用户无法访问匿名用户仪表盘
-        redirect_to root_path if current_user.has_role? :anony and 
-            !current_user.has_role? :admin
         @user = User.find(params[:id])
         if @user.has_role? :admin
             @articles = Article.where(:status => "已投稿").paginate(page: params[:page],
