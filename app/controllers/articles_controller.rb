@@ -53,6 +53,13 @@ class ArticlesController < ApplicationController
          end
     end
 
+    def publish
+        @article = Article.find_by(id:params[:id])
+        if @article.update(:status => "已发布")
+            redirect_to @article 
+        end
+    end
+
     private
     def get_ip_port
         ip = `curl icanhazip.com`.chomp
