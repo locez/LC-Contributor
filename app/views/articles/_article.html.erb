@@ -2,7 +2,13 @@
     <div class="clearfix" >
        <div class="article-info"> 
            <%= link_to gravatar_for(article.user, size: 50), article.user %>
-           <span class="title"><%= link_to article.title, article %></span>
+        <span class="title"><%= link_to article.title, article %></span>
+           <% if article.status == "已发布" %>
+           <div class="url">
+                  发布地址: <%= link_to  article.published_url, article.published_url %>
+          </div>
+         <% end %>
+
            <span class="timestamp">
                  Updated <%= time_ago_in_words(article.updated_at) %> ago.
            </span>

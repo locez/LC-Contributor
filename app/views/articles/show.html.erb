@@ -36,10 +36,17 @@
         </div>
             <div class="url">
                 首发地址: <%= link_to  @article.source_url, @article.source_url %>
+        </div>
+        <% if @article.status == "已发布" %>
+            <div class="url">
+                发布地址: <%= link_to  @article.published_url, @article.published_url %>
             </div>
+        <% end %>
+ 
         </div>    
         
         <div class="pull-right" >
+
             <label class="btn btn-info disabled" >
                  <%= @article.status %>
             </label>
@@ -59,16 +66,20 @@
                     <% end %>
 
                     <% if @article.status == "已投稿" %>
-                        <%= link_to "发布", publish_article_path(@article), method: :patch,
-                            data: { confirm: "确定发布？"},
-                            class: "btn btn-primary" %>
-                    <% end %>
+                        <%= form_tag publish_article_path(@article), method: :patch,
+                                style: "width:180px;"
+                    %>
+                         <%= submit_tag "发布", class: "btn btn-primary",
+                                data: { confirm: "确定发布？", 
+                                disable_with: false } %>                      
+                               <%= url_field_tag "published_url" %>
+                     <% end %>
 
 
                 <% end %>
         </div>
         <hr/>
-        <div class="row">
+        <div class="row" style="padding-top: 40px;">
             <div class="col-md-6 left">
                 <pre class="highlight markdown"> 
                     <code class="hljs">

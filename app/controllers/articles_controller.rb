@@ -55,9 +55,13 @@ class ArticlesController < ApplicationController
 
     def publish
         @article = Article.find_by(id:params[:id])
-        if @article.update(:status => "已发布")
-            redirect_to @article 
+        published_url = params[:published_url]
+        if published_url.empty?
+            flash[:danger] = "发布地址不能为空"
+        elsif @article.update(:status => "已发布",:published_url => published_url)
+            flash[:success] = "发布成功！"
         end
+        redirect_to @article 
     end
 
     private
